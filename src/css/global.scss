@@ -1,7 +1,6 @@
-$color : green;
-$fondo: grey;
+@import '__vars';
 
 body {
-  background-color: $fondo;
-  color: $color;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
 }
