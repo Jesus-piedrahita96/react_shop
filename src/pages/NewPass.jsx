@@ -7,7 +7,7 @@ function NewPass() {
       <div className='new-pass'>
         <div className='new-pass__header'>
           <img
-            src="../Logos/logo_yard_sale.svg"
+            src="../asset/Logos/logo_yard_sale.svg"
             className='new-pass__header__logo'
             alt='logo'
           />

@@ -22,7 +22,7 @@ function Checkout() {
             </div>
           </div>
           <div className="checkout__container__body">
-            <OrderItem />
+            { datos.map(data => <OrderItem key={data.id} data={data} />) }
           </div>
         </div>
       </div>

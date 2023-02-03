@@ -57,9 +57,30 @@
   height: 45px;
 }
 
+.secondary-button{
+  background-color: var(--white);
+  border-radius: 8px;
+  border: solid 1px;
+  color: var(--hospital-green);
+  width: 100%;
+  cursor: pointer;
+  font-size: var(--md);
+  font-weight: bold;
+  height: 30px;
+}
+
+
 .login-button{
   margin-top: 14px;
   margin-bottom: 30px;
+}
+
+.link{
+  color: var(--hospital-green);
+  font-size: var(--sm);
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 640px){

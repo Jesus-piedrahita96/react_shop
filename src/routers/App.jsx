@@ -13,15 +13,17 @@ import PasswordRecovery from "../pages/PasswordRecovery";
 import MyAccount from "../pages/MyAccount";
 import Orders from "../pages/Orders";
 import SendEmail from "../pages/SendEmail";
+import Header from '../components/Header';
+import ProductItem from "../components/ProductItem";
 
 import '../css/global.scss'
-
 
 function App() {
   return(
     <>
       <BrowserRouter>
         <Layout>
+          <Header />
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/login' component={Login} />
@@ -32,6 +34,7 @@ function App() {
             <Route exact path='/checkout' component={Checkout} />
             <Route exact path='/orders' component={Orders} />
             <Route exact path='/send-email' component={SendEmail} />
+            <Route exact path='/prueba' component={ProductItem} />
             <Route path='*' component={NotFound} />
           </Switch>
         </Layout>
