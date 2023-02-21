@@ -5,6 +5,8 @@ nav{
   justify-content: space-between;
   padding: 40px 20px;
   border-bottom: solid 1px var(--very-light-pink);
+  position: relative;
+  z-index: 1;
 }
 
 .menu{

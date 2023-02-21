@@ -5,9 +5,17 @@ import { Link } from "react-router-dom";
 import logo from '@logos/logo_yard_sale.svg'
 
 function Login() {
-  const send = (event) => {
+  const form = React.useRef(null)
+
+  const handleLogin = (event) => {
     event.preventDefault()
-    console.log('haciendo login')
+    const dataFrom = new FormData(form.current)
+    const data = {
+      username: dataFrom.get('email'),
+      password: dataFrom.get('new-password')
+    }
+
+    console.log(data)
   }
 
   return(
@@ -20,9 +28,10 @@ function Login() {
             className="logo"
             />
 
-          <form onSubmit={send} className="form">
+          <form ref={form} className="form">
             <label htmlFor="email" className="label">Email</label>
             <input type="text"
+            name="email"
             id="email"
             placeholder="jesu9606@mail.com"
             className="input input-email"
@@ -31,12 +40,13 @@ function Login() {
             <label htmlFor="new-password" className="label">Password</label>
             <input type="password"
             id="new-password"
+            name="new-password"
             placeholder="********"
             className="input input-password"
             />
 
             <button
-              type="submit"
+              onClick={handleLogin}
               className="primary-button login-button"
             >Login
             </button>

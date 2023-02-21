@@ -13,8 +13,11 @@ import PasswordRecovery from "../pages/PasswordRecovery";
 import MyAccount from "../pages/MyAccount";
 import Orders from "../pages/Orders";
 import SendEmail from "../pages/SendEmail";
+
 import Header from '../components/Header';
 import ProductItem from "../components/ProductItem";
+
+import {DataProvider} from '../hooks/DataContext'
 
 import '../css/global.scss'
 
@@ -22,22 +25,24 @@ function App() {
   return(
     <>
       <BrowserRouter>
-        <Layout>
-          <Header />
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={CreateAccount} />
-            <Route exact path='/new-password' component={NewPass} />
-            <Route exact path='/password-recovery' component={PasswordRecovery} />
-            <Route exact path='/account' component={MyAccount} />
-            <Route exact path='/checkout' component={Checkout} />
-            <Route exact path='/orders' component={Orders} />
-            <Route exact path='/send-email' component={SendEmail} />
-            <Route exact path='/prueba' component={ProductItem} />
-            <Route path='*' component={NotFound} />
-          </Switch>
-        </Layout>
+        <DataProvider>
+          <Layout>
+            <Header />
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={CreateAccount} />
+              <Route exact path='/new-password' component={NewPass} />
+              <Route exact path='/password-recovery' component={PasswordRecovery} />
+              <Route exact path='/account' component={MyAccount} />
+              <Route exact path='/checkout' component={Checkout} />
+              <Route exact path='/orders' component={Orders} />
+              <Route exact path='/send-email' component={SendEmail} />
+              <Route exact path='/prueba/' component={ProductItem} />
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </Layout>
+        </DataProvider>
       </BrowserRouter>
     </>
   )

@@ -1,23 +1,36 @@
 import React from "react";
 import '../css/product_info.scss';
+import { useData } from "../hooks/DataContext";
+import carrito from '@icons/bt_add_to_cart.svg'
+import cerrar from '@icons/icon_close.png'
 
-function ProductInfo() {
+function ProductInfo({id, change, value}) {
+  const datos = useData()
+  const item = datos.find(data => data.id === id)
+
+  const handleClose = () => {
+    change({...value, estado: false})
+  }
+
   return(
     <>
-      <img src="https://olimpica.vtexassets.com/arquivos/ids/524355/Bicicleta-RALI-RIO-Mec%EF%BF%BDnica-29-Hombre--Negro-Verde.jpg?v=637558583193570000" alt="bike"/>
-      <div className="product-info">
-        <p>$120.00</p>
-        <p>Bike</p>
-        <p>
-          Una bicicleta es un medio de transporte alternativo que te permite desplazarte sin 
-          contaminar el medio ambiente, además, te permite mejorar tu resistencia aeróbica y 
-          te ayuda a fortalecer los músculos de tu cuerpo
-        </p>
-        <button className="primary-button">
-          <img src="../asset/icons/bt_add_to_cart.svg" alt="add to cart" />
-          add to cart
-        </button>
+      <aside className="product-detail">
+      <div className="product-detail-close" onClick={handleClose}>
+        <img src={cerrar} alt="cerrar"/>
       </div>
+        <img src={item.img} alt="bike"/>
+        <div className="product-detail__info">
+          <p>${item.price}</p>
+          <p>{item.name}</p>
+          <p>
+            {item.description}
+          </p>
+          <button className="primary-button">
+            <img src={carrito} alt="add to cart" />
+            add to cart
+          </button>
+        </div>
+      </aside>
     </>
   )
 }

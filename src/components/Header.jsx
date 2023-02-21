@@ -1,5 +1,7 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom"
+import {useGeneric} from '../hooks/DataContext'
+import Menu from '../components/Menu'
 import '@styles/header.scss';
 
 import menuIcon from '@icons/icon_menu.svg';
@@ -7,6 +9,13 @@ import logo from '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg'
 
 function Header() {
+  const [state, setState] = React.useState(false)
+  const count = useGeneric()
+
+  const tooggle = () => {
+    setState(!state)
+  }
+
   return(
     <>
       <nav>
@@ -31,16 +40,21 @@ function Header() {
         </div>
         <div className="navbar-right">
           <ul>
-            <li> <Link to='/'> Jesu9606@gmail.com </Link> </li>
+            <li>
+              <Link to='#' onClick={tooggle}>
+                Jesu9606@gmail.com
+              </Link>
+            </li>
             <li className="navbar-shopping-cart">
               <img
                 src={shoppingCart}
                 alt="shopping-cart"
               />
-              <div>2</div>
+              <div>{count}</div>
             </li>
           </ul>
         </div>
+        {state && <Menu />}
       </nav>
     </>
   )
