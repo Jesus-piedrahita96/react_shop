@@ -82,5 +82,21 @@
 @media(max-width: 640px){
   .product-detail{
     width: 100%;
+    height: 77vh;
+    top: -457px;
+  }
+
+  .product-detail img:nth-child(2) {
+    width: 230px;
+    height: 170px;
+    margin: 5px 96px;
+  }
+
+  .product-detail__info p:nth-child(2) {
+    margin-bottom: 10px;
+  }
+
+  .product-detail__info p:nth-child(3) {
+    margin-bottom: 15px;
   }
 }

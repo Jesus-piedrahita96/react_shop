@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import {useGeneric} from '../hooks/DataContext'
 import Menu from '../components/Menu'
 import '@styles/header.scss';
@@ -7,13 +7,25 @@ import '@styles/header.scss';
 import menuIcon from '@icons/icon_menu.svg';
 import logo from '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg'
+import { Modal } from "../containers/Modal";
+import MyOrder from "../containers/MyOrder";
 
 function Header() {
-  const [state, setState] = React.useState(false)
+  const [state, setState] = React.useState({
+    menu: false,
+    shopping: false
+  })
   const count = useGeneric()
 
   const tooggle = () => {
-    setState(!state)
+    setState({menu: !state.menu})
+  }
+
+  const handleModal = () => {
+    if(count != 0) {
+      setState({shopping: !state.shopping})
+    }
+
   }
 
   return(
@@ -47,6 +59,7 @@ function Header() {
             </li>
             <li className="navbar-shopping-cart">
               <img
+                onClick={handleModal}
                 src={shoppingCart}
                 alt="shopping-cart"
               />
@@ -54,7 +67,12 @@ function Header() {
             </li>
           </ul>
         </div>
-        {state && <Menu />}
+        {state.menu && <Menu />}
+        {state.shopping &&
+          <Modal>
+            <MyOrder />
+          </Modal>
+        }
       </nav>
     </>
   )

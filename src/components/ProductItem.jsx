@@ -47,7 +47,6 @@ function ProductItem() {
           <div>
             <ProductInfo id={state.id} change={setState} value={state}/>
           </div>
-          
         </Modal>
       )}
     </>
