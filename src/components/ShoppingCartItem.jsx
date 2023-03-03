@@ -1,18 +1,19 @@
 import React from "react";
-import { useData } from "../hooks/DataContext";
+import { useCrud, useData } from "../hooks/DataContext";
 import iconClose from '@icons/icon_close.png'
 import '../css/shopping.scss'
 
 
 function ShoppingCartItem() {
   const datos = useData()
+  const crud = useCrud()
   const aux = []
   datos.map(data => {
-    if(data.selected === true){
+    if (data.selected === true) {
       aux.push(data)
     }
   })
-  console.log(aux)
+
   return (
     <>
       <div className="order-item">
@@ -23,7 +24,7 @@ function ShoppingCartItem() {
             </figure>
             <p>{data.name}</p>
             <p>${data.price}</p>
-            <img src={iconClose} alt="close" />
+            <img src={iconClose} alt="close" onClick={() => crud.onChange(data.id)} />
           </div>
         ))}
       </div>

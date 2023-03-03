@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import {useGeneric} from '../hooks/DataContext'
+import { useGeneric } from '../hooks/DataContext'
 import Menu from '../components/Menu'
 import '@styles/header.scss';
 
@@ -11,24 +11,24 @@ import { Modal } from "../containers/Modal";
 import MyOrder from "../containers/MyOrder";
 
 function Header() {
-  const [state, setState] = React.useState({
+  const [ state, setState ] = React.useState({
     menu: false,
     shopping: false
   })
   const count = useGeneric()
 
   const tooggle = () => {
-    setState({menu: !state.menu})
+    setState({ menu: !state.menu })
   }
 
   const handleModal = () => {
-    if(count != 0) {
-      setState({shopping: !state.shopping})
+    if (count != 0) {
+      setState({ shopping: !state.shopping })
     }
 
   }
 
-  return(
+  return (
     <>
       <nav>
         <img
@@ -70,7 +70,7 @@ function Header() {
         {state.menu && <Menu />}
         {state.shopping &&
           <Modal>
-            <MyOrder />
+            <MyOrder setState={setState} />
           </Modal>
         }
       </nav>

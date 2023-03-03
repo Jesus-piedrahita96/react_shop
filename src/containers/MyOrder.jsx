@@ -2,25 +2,37 @@ import React from "react";
 import ShoppingCartItem from "../components/ShoppingCartItem";
 import flecha from '@icons/flechita.svg'
 import '../css/order.scss'
-import { useData } from "../hooks/DataContext";
+import { useData, useGeneric } from "../hooks/DataContext";
 
-function MyOrder() {
+function MyOrder({setState}) {
   const [precio, setPrecio] = React.useState(0)
   const datos = useData()
+  const count = useGeneric()
+  let aux = []
 
-  //todo: pendiente organizar la funcion
-  datos.map((data) => {
-    if(data.selected === true) {
-      setPrecio()
+  React.useEffect(() => {
+    datos.map((data) => {
+      if(data.selected === true) {
+        aux.push(data.price)
+      }
+    })
+
+    if (aux.length > 0) {
+      let suma = aux.reduce((count, value) => count + value, 0)
+      setPrecio(suma)
     }
-  })
-  console.log(precio)
+  }, [count])
+
+  const handleClose = () => {
+    setState({shopping: false})
+  }
+
   return(
     <>
       <aside className="product-detail">
         <div className="my-order-content">
           <div className="tittle">
-            <img src={flecha} alt="arrow" />
+            <img src={flecha} alt="arrow" onClick={handleClose} />
             <p>Shopping cart</p>
           </div>
           <ShoppingCartItem />
